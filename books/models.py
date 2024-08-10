@@ -7,9 +7,15 @@ class Author(models.Model):
     """Модель для автора"""
 
     id: uuid.UUID = models.UUIDField(
-        primary_key=True, default=uuid.uuid4, editable=False, unique=True, verbose_name='id'
+        primary_key=True,
+        default=uuid.uuid4,
+        editable=False,
+        unique=True,
+        verbose_name="id",
     )
-    name: str = models.CharField(max_length=255, unique=True, null=False, blank=False, verbose_name='Полное имя')
+    name: str = models.CharField(
+        max_length=255, unique=True, null=False, blank=False, verbose_name="Полное имя"
+    )
 
     def save(self, *args: Any, **kwargs: Any) -> None:
         """Метод для сохранеения без пробелов в начале и конце"""
@@ -29,12 +35,22 @@ class Book(models.Model):
     """Модель для книг"""
 
     id: uuid.UUID = models.UUIDField(
-        primary_key=True, default=uuid.uuid4, editable=False, unique=True, verbose_name='id',
+        primary_key=True,
+        default=uuid.uuid4,
+        editable=False,
+        unique=True,
+        verbose_name="id",
     )
     title: str = models.CharField(
-        max_length=100, unique=True, null=False, blank=False, verbose_name='Название книги',
+        max_length=100,
+        unique=True,
+        null=False,
+        blank=False,
+        verbose_name="Название книги",
     )
-    authors: models.ManyToManyField = models.ManyToManyField(Author, verbose_name='авторы', related_name='books')
+    authors: models.ManyToManyField = models.ManyToManyField(
+        Author, verbose_name="авторы", related_name="books"
+    )
 
     def save(self, *args: Any, **kwargs: Any) -> None:
         """Метод для сохранеения без пробелов в начале и конце"""

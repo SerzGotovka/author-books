@@ -1,5 +1,5 @@
 from django_filters.rest_framework import DjangoFilterBackend
-from rest_framework import viewsets, generics, filters, status
+from rest_framework import generics, status
 from rest_framework.response import Response
 from rest_framework.request import Request
 from .models import Book, Author
@@ -9,7 +9,7 @@ from django.db.models.query import QuerySet
 from django.db.models import Count
 from typing import List, Any
 from rest_framework import serializers
-from drf_spectacular.utils import extend_schema, extend_schema_view
+from drf_spectacular.utils import extend_schema
 
 
 @extend_schema(tags=["Author"])
